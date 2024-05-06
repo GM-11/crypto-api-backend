@@ -26,8 +26,7 @@ setInterval(fetchPriceEvery10mins, 1000 * 60 * 10); // 10 minutes
 
 const port = 3000;
 
-const server = app.listen(port, () => {
+export default server = app.listen(port, () => {
   console.log(`Server started`);
 });
 
-export default server;
