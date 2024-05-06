@@ -3,7 +3,7 @@ import transactionData from "./routes/transactionData.js";
 import ethPrice from "./routes/ethPrice.js";
 import userInfo from "./routes/userInfo.js";
 
-export const app = express();
+const app = express();
 
 app.use(express.json());
 
@@ -30,3 +30,4 @@ app.listen(port, () => {
   console.log(`Server started at http://localhost:${port}`);
 });
 
+export default app;
