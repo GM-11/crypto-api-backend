@@ -11,6 +11,10 @@ app.use("/transactionData", transactionData);
 app.use("/ethPrice", ethPrice);
 app.use("/userInfo", userInfo);
 
+app.get("/", (req, res) => {
+  res.send("KoinX assignment backend");
+});
+
 const fetchPriceEvery10mins = async () => {
   const fetchURL = `http://localhost:${port}/ethPrice`;
 
@@ -26,7 +30,6 @@ setInterval(fetchPriceEvery10mins, 1000 * 60 * 10); // 10 minutes
 
 const port = 3000;
 
-export default server = app.listen(port, () => {
+export default app.listen(port, () => {
   console.log(`Server started`);
 });
-
