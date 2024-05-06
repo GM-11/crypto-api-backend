@@ -1,11 +1,26 @@
 import express from "express";
 import transactionData from "./routes/transactionData.js";
+import ethPrice from "./routes/ethPrice.js";
 
 const app = express();
 
 app.use(express.json());
 
 app.use("/transactionData", transactionData);
+app.use("/ethPrice", ethPrice);
+
+const fetchPriceEvery10mins = async () => {
+  const fetchURL = `http://localhost:${port}/ethPrice`;
+
+   await fetch(fetchURL, {
+    method: "GET",
+    headers: {
+      "Content-Type": "applications/json",
+    },
+  });
+};
+
+setInterval(fetchPriceEvery10mins, 1000 * 60 * 10); // 10 minutes
 
 const port = 3000;
 
