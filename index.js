@@ -1,8 +1,11 @@
 import express from "express";
+import transactionData from "./routes/transactionData.js";
 
 const app = express();
 
 app.use(express.json());
+
+app.use("/transactionData", transactionData);
 
 const port = 3000;
 
