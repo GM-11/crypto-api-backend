@@ -1,4 +1,5 @@
 import express from "express";
+import path from "path";
 import transactionData from "./routes/transactionData.js";
 import ethPrice from "./routes/ethPrice.js";
 import userInfo from "./routes/userInfo.js";
@@ -6,13 +7,14 @@ import userInfo from "./routes/userInfo.js";
 const app = express();
 
 app.use(express.json());
+app.use(express.static("public"));
 
 app.use("/transactionData", transactionData);
 app.use("/ethPrice", ethPrice);
 app.use("/userInfo", userInfo);
 
 app.get("/", (req, res) => {
-  res.send("KoinX assignment backend");
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 const fetchPriceEvery10mins = async () => {
